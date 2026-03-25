@@ -1,325 +1,131 @@
 # Contributing to next-openapi-gen
 
-Thank you for considering contributing to **next-openapi-gen**! 🎉
+Thanks for helping improve `next-openapi-gen`.
 
-We welcome contributions from the community, whether it's:
+## Before you start
 
-- 🐛 Bug reports
-- ✨ Feature requests
-- 📝 Documentation improvements
-- 🔧 Code contributions
+- Use Node.js 18 or newer.
+- The repository itself currently uses npm and `package-lock.json`.
+- Keep changes focused and update documentation when you change CLI behavior, config fields, or example usage.
 
-## 📋 Table of Contents
-
-- [Code of Conduct](#code-of-conduct)
-- [Getting Started](#getting-started)
-- [Commit Message Guidelines](#commit-message-guidelines)
-- [Pull Request Process](#pull-request-process)
-- [Development Setup](#development-setup)
-- [Release Process](#release-process)
-
----
-
-## Code of Conduct
-
-Please be respectful and constructive in all interactions.
-
----
-
-## Getting Started
-
-### 1. Fork and Clone
+## Local setup
 
 ```bash
-# Fork the repository on GitHub, then:
 git clone https://github.com/YOUR_USERNAME/next-openapi-gen.git
 cd next-openapi-gen
-```
-
-### 2. Install Dependencies
-
-```bash
 npm install
 ```
 
-### 3. Create a Branch
+Create a branch for your work:
 
 ```bash
-git checkout -b feat/my-feature
-# or
-git checkout -b fix/my-bugfix
+git checkout -b feat/my-change
 ```
 
----
+## Project layout
 
-## Commit Message Guidelines
-
-We use **[Conventional Commits](https://www.conventionalcommits.org/)** format for commit messages. This helps us automatically generate changelogs and determine version bumps.
-
-### Format
-
-```
-<type>: <description>
-
-[optional body]
-
-[optional footer]
+```text
+next-openapi-gen/
+├── src/        # package source
+├── tests/      # Vitest coverage
+├── examples/   # example Next.js apps
+└── dist/       # build output
 ```
 
-### Types
+## Development workflow
 
-| Type        | Description             | Version Bump          | Example                              |
-| ----------- | ----------------------- | --------------------- | ------------------------------------ |
-| `feat:`     | New feature             | MINOR (0.8.0 → 0.9.0) | `feat: add Drizzle ORM support`      |
-| `fix:`      | Bug fix                 | PATCH (0.8.0 → 0.8.1) | `fix: resolve type errors`           |
-| `perf:`     | Performance improvement | PATCH                 | `perf: optimize schema processing`   |
-| `docs:`     | Documentation only      | None                  | `docs: update README examples`       |
-| `style:`    | Code formatting         | None                  | `style: fix indentation`             |
-| `refactor:` | Code refactoring        | None                  | `refactor: simplify route processor` |
-| `test:`     | Tests only              | None                  | `test: add unit tests for converter` |
-| `build:`    | Build system changes    | None                  | `build: update tsconfig`             |
-| `ci:`       | CI/CD changes           | None                  | `ci: add workflow`                   |
-| `chore:`    | Maintenance tasks       | None                  | `chore: update dependencies`         |
-
-### Breaking Changes
-
-For breaking changes, add `!` after the type or include `BREAKING CHANGE:` in the footer:
-
-```
-feat!: migrate to ESM modules
-
-BREAKING CHANGE: CommonJS is no longer supported.
-Node.js 16 is no longer supported, minimum version is now 18.0.0.
-```
-
-**Version bump:** MAJOR (0.8.0 → 1.0.0)
-
-### Examples
-
-✅ **Good commit messages:**
-
-```
-feat: add support for Drizzle ORM schemas
-fix: resolve crash on dynamic routes
-perf: improve OpenAPI generation speed by 40%
-docs: add examples for Zod integration
-refactor: simplify schema processor logic
-test: add integration tests for route processor
-```
-
-❌ **Bad commit messages:**
-
-```
-added feature
-fix
-update
-WIP
-Fixed stuff
-```
-
-### Scope (Optional)
-
-You can add a scope for more context:
-
-```
-feat(drizzle): add support for Drizzle schemas
-fix(types): resolve TypeScript errors in route processor
-docs(readme): add installation instructions
-```
-
----
-
-## Pull Request Process
-
-### 1. Ensure Your Code Quality
-
-Before submitting a PR:
+Run the checks that match your change before opening a pull request:
 
 ```bash
-# Run tests
 npm test
-
-# Build the project
 npm run build
-
-# Ensure no TypeScript errors
 npx tsc --noEmit
 ```
 
-### 2. Update Documentation
-
-- Update README.md if you added new features
-- Add JSDoc comments for new functions/classes
-- Update examples if needed
-
-### 3. Create a Pull Request
-
-**Important:** Your PR title must follow the Conventional Commits format!
-
-#### ✅ Good PR Titles:
-
-```
-feat: add support for Drizzle ORM schemas
-fix: resolve TypeScript type errors in route processor
-docs: update README with new examples
-```
-
-#### ❌ Bad PR Titles:
-
-```
-Added drizzle support
-Fixed bugs
-Update
-```
-
-**Why?** We use **squash merge**, so your PR title becomes the commit message in the main branch.
-
-### 4. PR Template
-
-When you create a PR, a template will guide you through:
-
-- Description of changes
-- Type of change (bug fix, feature, etc.)
-- Checklist
-
-### 5. Review Process
-
-- Maintainers will review your PR
-- Address any feedback
-- Once approved, your PR will be squashed and merged
-
----
-
-## Development Setup
-
-### Project Structure
-
-```
-next-openapi-gen/
-├── src/
-│   ├── commands/       # CLI commands (init, generate)
-│   ├── components/     # UI components (Swagger, Scalar, etc.)
-│   ├── lib/           # Core logic
-│   │   ├── openapi-generator.ts
-│   │   ├── route-processor.ts
-│   │   ├── schema-processor.ts
-│   │   └── zod-converter.ts
-│   └── index.ts       # Entry point
-├── tests/             # Test files
-├── examples/          # Example Next.js apps
-└── dist/             # Build output (ignored)
-```
-
-### Build System
+Useful extras:
 
 ```bash
-# Clean build artifacts
-npm run clean
-
-# Build TypeScript
-npm run build
-
-# Watch mode (auto-rebuild on changes)
-npx tsc --watch
-```
-
-### Testing
-
-```bash
-# Run all tests
-npm test
-
-# Watch mode
 npm run test:watch
-
-# UI mode
 npm run test:ui
-
-# Coverage report
 npm run test:coverage
 ```
 
-### Local Testing
+## Pull requests
 
-To test the CLI locally:
+Pull request titles should use the Conventional Commits format because the repository uses squash merge.
 
-```bash
-# Build first
-npm run build
+Examples:
 
-# Link globally
-npm link
-
-# Now you can use it in any Next.js project
-cd /path/to/your/nextjs/app
-next-openapi-gen init
-next-openapi-gen generate
-
-# Unlink when done
-npm unlink -g next-openapi-gen
+```text
+feat: add support for custom response sets
+fix: resolve pages router method detection
+docs: simplify README quick start
 ```
 
----
+When you open a PR:
 
-## Release Process
+- summarize the user-facing change and why it matters
+- list the commands or manual checks you ran
+- update `README.md`, example docs, or changelog-related documentation when behavior changed
 
-**Note:** Only maintainers can create releases.
+## Commit message guide
 
-### For Maintainers
+Use a conventional commit type that matches the intent of the change:
 
-We use [`np`](https://github.com/sindresorhus/np) for interactive releases with automatic changelog generation.
+| Type | Use for |
+| --- | --- |
+| `feat` | new functionality |
+| `fix` | bug fixes |
+| `docs` | documentation-only changes |
+| `refactor` | internal restructuring without behavior changes |
+| `test` | test-only updates |
+| `build` | package, tooling, or build pipeline updates |
+| `ci` | CI workflow changes |
+| `chore` | maintenance work |
 
-#### Creating a Release
+Breaking changes should use `!` in the type or include a `BREAKING CHANGE:` footer.
+
+## Documentation expectations
+
+Keep repo-facing docs accurate:
+
+- `README.md` should describe the current CLI surface and supported config
+- example READMEs should match the commands used in that example
+- `CONTRIBUTING.md` and the pull request template should match the actual contributor workflow
+
+Prefer accurate documentation over aspirational documentation. If a script or workflow does not exist yet, do not document it as if it does.
+
+## Releases
+
+Only maintainers should cut releases.
+
+Before running the release command, manually run the normal verification steps:
+
+```bash
+npm test
+npm run build
+npx tsc --noEmit
+```
+
+Then run:
 
 ```bash
 npm run release
 ```
 
-This will:
+Current release behavior:
 
-1. ✅ Run tests
-2. ✅ Build the project
-3. ✅ Prompt you to select version (patch/minor/major)
-4. ✅ Auto-generate CHANGELOG.md from commits
-5. ✅ Update package.json version
-6. ✅ Create git tag
-7. ✅ Push to GitHub
-8. ✅ Publish to npm
-9. ✅ Create GitHub Release
+- uses `np`
+- skips tests during the `np` run itself
+- updates `CHANGELOG.md` through the `version` lifecycle script
 
-#### Manual Version Selection
+If you change the release flow, update this file, `README.md`, and the relevant scripts together.
 
-```bash
-# Specific version
-npx np 1.0.0
+## Questions
 
-# Beta release
-npx np 1.0.0-beta.1
-
-# Only tag, skip npm publish
-npx np --no-publish
-```
-
-#### Version Bump Guidelines
-
-Based on commit types since last release:
-
-- **MAJOR (1.0.0):** Breaking changes (`feat!:`, `fix!:`, or `BREAKING CHANGE:` in commits)
-- **MINOR (0.9.0):** New features (`feat:`)
-- **PATCH (0.8.1):** Bug fixes (`fix:`, `perf:`)
-
----
-
-## Questions?
-
-- 💬 Open a [Discussion](https://github.com/tazo90/next-openapi-gen/discussions)
-- 🐛 Report bugs via [Issues](https://github.com/tazo90/next-openapi-gen/issues)
-- 📧 Contact maintainer: Mariusz Winnik
-
----
+- Open a GitHub issue for bugs
+- Open a GitHub discussion for usage questions or broader ideas
 
 ## License
 
 By contributing, you agree that your contributions will be licensed under the MIT License.
-
-Thank you for making **next-openapi-gen** better! 🚀

@@ -1,4 +1,15 @@
 **/node_modules
 **/dist
+**/.next
+**/coverage
+*.log
+*.tsbuildinfo
+.DS_Store
 .npmrc
+
+# Local agent and editor state
+.agents/
+.claude/
+.cursor/hooks/state/
+skills-lock.json
 

@@ -1,51 +1,21 @@
-## Description
+# Pull Request
 
-<!-- Describe your changes in a few sentences -->
+## Summary
 
-## Type of Change
+- Describe the main change in one or two bullets.
+- Explain why this change is needed.
 
-- [ ] ✨ **feat:** New feature
-- [ ] � **fix:** Bug fix
-- [ ] 📝 **docs:** Documentation update
-- [ ] ♻️ **refactor:** Code refactoring
-- [ ] ⚡ **perf:** Performance improvement
-- [ ] 💥 **Breaking change** (add `!` after type, e.g., `feat!:`)
+## Test plan
+
+- [ ] `npm test`
+- [ ] `npm run build`
+- [ ] `npx tsc --noEmit`
+- [ ] Not run because:
 
 ## Checklist
 
-- [ ] Code follows project style
-- [ ] Tested locally
-- [ ] Documentation updated (if needed)
+- [ ] PR title follows Conventional Commits, for example `fix: resolve pages router docs`
+- [ ] Documentation is updated when behavior, examples, or CLI/config surface changed
+- [ ] I kept the change focused to a single topic
 
----
-
-## ⚠️ PR Title Format Required
-
-Your **PR title** must follow [Conventional Commits](https://www.conventionalcommits.org/):
-
-### ✅ Good Examples
-
-```
-feat: add support for multiple schema types
-fix: resolve path parameter detection issue
-docs: update configuration examples
-```
-
-### ❌ Bad Examples
-
-```
-Added feature
-Fixed bug
-Update README
-```
-
-**Why?** We use squash merge - your PR title becomes the commit message and is used for:
-- 📊 Auto-generating changelogs
-- 🏷️ Version bumping (`feat:` = minor, `fix:` = patch)
-- 📖 Clean git history
-
-See [CONTRIBUTING.md](../CONTRIBUTING.md) for details.
-
----
-
-Thanks for contributing! 🚀
+See [`CONTRIBUTING.md`](../CONTRIBUTING.md) for the contributor workflow and release notes.
