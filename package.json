@@ -16,12 +16,11 @@
     "clean": "rm -rf dist",
     "build": "npm run clean && tsc",
     "prepare": "npm run build",
+    "release:publish": "npm publish",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
-    "test:coverage": "vitest run --coverage",
-    "release": "np --no-cleanup --no-tests",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s -n .changelogrc.cjs && git add CHANGELOG.md"
+    "test:coverage": "vitest run --coverage"
   },
   "repository": {
     "type": "git",
@@ -62,18 +61,7 @@
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^24.3.0",
     "@vitest/ui": "^3.2.4",
-    "conventional-changelog-cli": "^5.0.0",
-    "np": "^10.2.0",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
-  },
-  "np": {
-    "yarn": false,
-    "anyBranch": false,
-    "branch": "main",
-    "cleanup": false,
-    "tests": false,
-    "2fa": false,
-    "releaseDraft": false
   }
 }

@@ -267,38 +267,33 @@ npm unlink -g next-openapi-gen
 
 ### For Maintainers
 
-We use [`np`](https://github.com/sindresorhus/np) for interactive releases with automatic changelog generation.
+We use [`release-please`](https://github.com/release-please/release-please-action) to open and update release PRs from conventional commits on `main`.
 
 #### Creating a Release
 
-```bash
-npm run release
-```
+Release Please handles versioning, changelog updates, tagging, and GitHub releases automatically:
 
-This will:
+1. ✅ Merge conventional-commit changes into `main`
+2. ✅ Let the `release-please` workflow open or update the release PR
+3. ✅ Review the generated version bump and `CHANGELOG.md`
+4. ✅ Run `npm test` and `npm run build` before merging the release PR
+5. ✅ Merge the release PR
+6. ✅ Let GitHub create the tag and GitHub Release automatically after merge
 
-1. ✅ Run tests
-2. ✅ Build the project
-3. ✅ Prompt you to select version (patch/minor/major)
-4. ✅ Auto-generate CHANGELOG.md from commits
-5. ✅ Update package.json version
-6. ✅ Create git tag
-7. ✅ Push to GitHub
-8. ✅ Publish to npm
-9. ✅ Create GitHub Release
+#### Publishing To npm
 
-#### Manual Version Selection
+After the release PR is merged, publish the tagged package to npm manually from the updated `main` branch:
 
 ```bash
-# Specific version
-npx np 1.0.0
-
-# Beta release
-npx np 1.0.0-beta.1
-
-# Only tag, skip npm publish
-npx np --no-publish
+git checkout main
+git pull --ff-only origin main
+npm install
+npm test
+npm run build
+npm run release:publish
 ```
+
+#### Release Notes And Versioning
 
 #### Version Bump Guidelines
 
